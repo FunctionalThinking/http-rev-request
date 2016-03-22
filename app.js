@@ -25,6 +25,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
+app.post('/post', function(req, res) {
+  var name = req.body.name
+    , ip = req.body.ip
+    , port = req.body.port
+    , contrast = req.body.contrast;
+  console.log(name, ip, port, contrast);
+  res.json({msg: 'Hello, Post', req: req.body});
+});
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
